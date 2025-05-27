@@ -291,4 +291,3 @@ void MainWindow::generateRandomNumber()
     ui->randomNumberLabel->setText(QString::number(randomNum));
 }
 
-

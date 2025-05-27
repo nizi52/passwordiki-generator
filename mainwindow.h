@@ -3,8 +3,7 @@
 
 #include <QMainWindow>
 #include <QClipboard>
-#include <QPushButton>
-#include <QLabel>
+#include <QString>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,14 +20,19 @@ public:
 private slots:
     void generatePasswords();
     void generateRandomNumber();
+    void checkPasswordStrength(const QString& password);
 
 private:
     Ui::MainWindow *ui;
     QClipboard *clipboard;
-    QString generateRandomPassword(int length, bool useUpper, bool useDigits, bool useSpecial);
-    void clearPasswordButtons();
-    void setupPasswordButtonsLayout();
-};
 
+    QString generateRandomPassword(int length, bool useUpper, bool useDigits, bool useSpecial);
+    void setupPasswordButtonsLayout();
+    void clearPasswordButtons();
+    int calculatePasswordEntropy(const QString& password);
+    QString calculateCrackAttempts(const QString& password);
+    QString getPasswordStrengthDescription(int entropy);
+    QString formatLargeNumber(double number) const;
+};
 
 #endif // MAINWINDOW_H
